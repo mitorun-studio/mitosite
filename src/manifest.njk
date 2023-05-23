@@ -1,0 +1,18 @@
+---
+permalink: /manifest.json
+eleventyExcludeFromCollections: true
+---
+{
+	"name": "{{ _site.siteName }}",
+	"description": "{{ _site.siteDescription }}",
+	"lang": "{{ _site.siteLang }}",
+	"theme_color": "{{ _site.siteThemeColor }}",
+	"display": "browser",
+	"dir": "ltr",
+	"id": "/",
+	"start_url": "/",
+	"icons": [
+		{"src": "/img/android-chrome-192x192.png", "type": "image/png", "sizes": "192x192"},
+		{"src": "/img/android-chrome-512x512.png", "type": "image/png", "sizes": "512x512"}
+	]
+}

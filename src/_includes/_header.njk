@@ -1,0 +1,31 @@
+<header class="header container">
+
+	<a class="header__brand" href="/">
+		<svg aria-hidden="true">
+			<use href="/img/sprite.svg#logo"></use>
+		</svg>
+		<span>mitorun studio</span>
+	</a>
+
+
+
+
+	<nav class="header__menu offcanvas offcanvas-end" id="offcanvasNavbar" tabindex="-1">
+		<button class="header__button btn-close" type="button" data-bs-dismiss="offcanvas" aria-label="Закрыть меню">закрыть</button>
+
+
+		<ul class="menu header-nav">
+			<li><a class="menu__link" href="/" {{ 'aria-current=page' if '/' == page.url }}>Главная</a></li>
+
+			<li><a class="menu__link {{ 'active' if '/blog' in page.url }}" href="/blog/" {{ 'aria-current=page' if '/blog/' == page.url }}>Блог</a></li>
+
+			<li><a class="menu__link {{ 'active' if '/contacts' in page.url }}" href="/contacts/" {{ 'aria-current=page' if '/contacts/' == page.url }}>Контакты</a></li>
+		</ul>
+	</nav>
+
+
+
+
+	<button class="header__button navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Открыть меню"></button>
+
+</header>

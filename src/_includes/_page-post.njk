@@ -1,0 +1,28 @@
+---
+layout: _page-base.njk
+---
+
+<section class="post container">
+
+	<div class="post__head">
+		{#<img class="post__img" src="/img/blog/{{ page.fileSlug }}.jpg" alt="Обложка статьи {{ title }}">#}
+		<h1 class="post__h1">{{ title }}</h1>
+		{#<p class="post__subtitle">{{ postDescription }}</p>#}
+		{#<p class="post__tag">{{ blogTag }}</p>#}
+
+		<div class="post__author">
+			<time datetime="{{ date.toISOString().slice(0, 10) }}">{{ date | readableDate }}</time>
+			<address>{{ author or 'Олег Миторун'}}</address>
+		</div>
+	</div>
+
+
+
+
+	<div class="post__content">
+
+		{{ content | safe }}
+
+	</div>
+
+</section>

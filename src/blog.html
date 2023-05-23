@@ -1,0 +1,33 @@
+---
+title: 'Блог'
+description: 'Описание блога.'
+layout: _page-base.njk
+---
+
+<section class="container">
+
+	<h1 class="h2">Блог</h1>
+
+	<p class="subtitle">Описание блога</p>
+
+
+
+
+	<ul class="blog">
+		{% for blog in collections.blog | reverse %}
+		<li class="blog__card">
+			<img class="blog__img" src="/img/blog/{{ blog.page.fileSlug }}.jpg" alt="Обложка статьи {{ blog.data.title }}">
+
+			<h3 class="blog__title h3">{{ blog.data.title }}</h3>
+
+			<p class="blog__tag">{{ blog.data.blogTag }}</p>
+
+			<div class="post__author">
+				<time datetime="{{ date.toISOString().slice(0, 10) }}">{{ blog.data.date | readableDate }}</time>
+				<address>{{ blog.data.author or 'Олег Миторун'}}</address>
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+
+</section>

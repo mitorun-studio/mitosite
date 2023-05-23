@@ -1,0 +1,5 @@
+{
+	"pageClass": "post",
+	"tags": "blog",
+	"layout": "_page-post.njk"
+}
