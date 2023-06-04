@@ -1,10 +1,12 @@
-/*-------- Стили для mito.site: ----------------*/
+/*------------------------------------------------
+---------- Сайт template: ------------------------
+------------------------------------------------*/
 
 @font-face {
 	font-family: 'Inter';
 	font-weight: 100 900;
 	font-style: normal;
-	src: url('/fls/inter-100-900-cyrillic.woff2') format('woff2');
+	src: url('./fls/inter-100-900-cyrillic.woff2') format('woff2');
 	unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 
@@ -12,9 +14,13 @@
 	font-family: 'Inter';
 	font-weight: 100 900;
 	font-style: normal;
-	src: url('/fls/inter-100-900-latin.woff2') format('woff2');
+	src: url('./fls/inter-100-900-latin.woff2') format('woff2');
 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+/*------------------------------------------------
+---------- Переменные: ---------------------------
+------------------------------------------------*/
 
 :root {
 	--font-family: 'Inter', 'Roboto', 'system-ui', '-apple-system', 'Segoe UI', 'Helvetica Neue', 'Arial', 'Noto Sans', 'Liberation Sans', sans-serif;
@@ -24,8 +30,6 @@
 	--font-size-l: 19px;
 	--font-size-m: 16px;
 	--font-size-s: 13px;
-	/*--font-form: 440 19px/min(normal, 1.375) var(--font-family);
-	--font-form-s: 440 16px/min(normal, 1.375) var(--font-family);*/
 	--font-weight-form: 440;
 	--font-size-form: 19px;
 	--font-size-form-s: 16px;
@@ -42,7 +46,7 @@
 	--container: 1200px;
 	--container-padding: 14px;
 	--padding-form: 14px;
-	--padding-form-s: 10px;
+	/*--padding-form-s: 10px;*/
 	--margin-xl: 112px;
 	--margin-l: 56px;
 	--margin-m: 28px;
@@ -67,7 +71,7 @@
 	--bg-warning: hsla(45, 100%, 51%, 0.1);
 
 	--border: 1px solid var(--color);
-	--border-radius-m: 5px;
+	--border-radius-m: 8px;
 	--ease-out: cubic-bezier(0.19, 0.75, 0.5, 1);
 	--ease-bounce: cubic-bezier(0.25, 0.25, 0.56, 1.8);
 	--ease-bounce-l: cubic-bezier(0.2, 1, 0.8, 3);
@@ -75,7 +79,7 @@
 	tab-size: 2;
 }
 
-@media (min-width: 576px) {
+@media (width >= 576px) {
 	:root {
 		--font-size-l: 20px;
 		--font-size-m: 17px;
@@ -89,12 +93,12 @@
 	}
 }
 
-@media (min-width: 992px) {
+@media (width >= 992px) {
 	:root {
 		--font-size-l: 21px;
 		--font-size-m: 18px;
 		--font-size-s: 15px;
-		--container-padding: 50px;
+		--container-padding: 40px;
 		--margin-xl: 130px;
 		--margin-l: 70px;
 		--margin-m: 32px;
@@ -103,7 +107,7 @@
 	}
 }
 
-@media (min-width: 1300px) {
+@media (width >= 1300px) {
 	:root {
 		--font-size-l: 23px;
 		--font-size-m: 19px;
@@ -116,6 +120,10 @@
 		--margin-xs: 10px;
 	}
 }
+
+/*------------------------------------------------
+---------- Базовые стили: ------------------------
+------------------------------------------------*/
 
 *,
 *::after,
@@ -154,6 +162,29 @@ body {
 	-webkit-text-size-adjust: 100%;
 	-webkit-tap-highlight-color: hsla(0, 0%, 0%, 0);
 }
+
+a,
+button,
+input,
+textarea,
+summary,
+optgroup,
+select,
+svg {
+	font: inherit;
+	text-transform: none;
+	color: inherit;
+	touch-action: manipulation;
+}
+
+button,
+summary {
+	cursor: pointer;
+}
+
+/*------------------------------------------------
+---------- Типографика: --------------------------
+------------------------------------------------*/
 
 h1,
 .h1,
@@ -204,46 +235,10 @@ h6,
 	font-size: var(--font-size-m, 16px);
 }
 
-/*h1[id],
-h2[id],
-h3[id] {
-	scroll-margin: clamp(80px, 17vh, 200px);
-}*/
-
-/*p,
+/*p:not([class]):not(:last-child),
 .p {
 	margin-bottom: 1em;
 }*/
-
-b,
-strong,
-.b {
-	font-weight: var(--font-weight-l, 600);
-}
-
-i,
-.i {
-	font-style: oblique;
-}
-
-a,
-button,
-input,
-textarea,
-summary,
-optgroup,
-select,
-svg {
-	font: inherit;
-	text-transform: none;
-	color: inherit;
-	touch-action: manipulation;
-}
-
-button,
-summary {
-	cursor: pointer;
-}
 
 a {
 	/*box-decoration-break: clone;
@@ -271,6 +266,17 @@ ol:not([class]),*/
 ol:not([class]) li:not([class])*/
 .list li {
 	margin-bottom: 0.5em;
+}
+
+b,
+strong,
+.b {
+	font-weight: var(--font-weight-l, 600);
+}
+
+i,
+.i {
+	font-style: oblique;
 }
 
 kbd,
@@ -321,23 +327,8 @@ svg {
 	shape-rendering: geometricprecision;
 }
 
-.noscript {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	padding: 4px 0;
-	font: 400 14px/1 var(--font-family-mono, monospace);
-	text-align: center;
-	color: var(--color-danger, red);
-	background: hsl(0, 0%, 100%);
-	/*border: 1px solid var(--color-danger, red);*/
-}
-
-
-
-
 /*------------------------------------------------
------- Основные блоки и служебные классы: --------
+---------- Служебные классы: ---------------------
 ------------------------------------------------*/
 
 .container {
@@ -386,6 +377,18 @@ svg {
 	font-size: var(--font-size-s, 12px);
 }
 
+.noscript {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	padding: 4px 0;
+	font: 400 14px/1 var(--font-family-mono, monospace);
+	text-align: center;
+	color: var(--color-danger, red);
+	background: hsl(0, 0%, 100%);
+	/*border: 1px solid var(--color-danger, red);*/
+}
+
 .scroll {
 	overflow: auto;
 }
@@ -397,13 +400,10 @@ svg {
 .stretch::before {
 	content: '';
 	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
+	inset: 0;
 }
 
-.icon {
+/*.icon {
 	width: 32px;
 	height: 32px;
 	color: currentcolor;
@@ -417,41 +417,7 @@ svg {
 		width: 36px;
 		height: 36px;
 	}
-}
-
-
-
-
-/*------------------------------------------------
------ Служебные классы скриптов бутстрапа: -------
-------------------------------------------------*/
-
-/* Это скрывает раскрывающийся контент когда нет класса .show: */
-
-.collapse:not(.show) {
-	display: none;
-}
-
-/* Этот класс добавляется скриптом бутстрапа ВО ВРЕМЯ АНИМАЦИИ, для раскрывающегося по высоте (вертикально) контента: */
-
-.collapsing {
-	height: 0;
-	overflow: hidden;
-	transition: height 0.35s ease;
-
-	/* Стили если раскрытие происходит горизонтально (.collapse-horizontal):
-	width: 0;
-	height: auto;
-	transition: width 0.35s ease;*/
-}
-
-.fade {
-	transition: opacity 0.2s linear;
-}
-
-.fade:not(.show) {
-	opacity: 0;
-}
+}*/
 
 
 
@@ -459,6 +425,15 @@ svg {
 /*------------------------------------------------
 ---------- Уникальное оформление сайта: ----------
 ------------------------------------------------*/
+
+
+
+
+
+
+
+
+
 
 
 

@@ -4,24 +4,24 @@ export PROJECT_NAME=${PWD##*/}
 # Get the script name from the first command line argument
 SCRIPT_NAME=$1
 # Run the specified script with the specified project name
-cd ../_PLUGINS
+cd ../plugins
 case $SCRIPT_NAME in
 	stylelint)
 		npx stylelint ../$PROJECT_NAME/src/**/*.css --fix
 		;;
 	yaspeller)
-		npx yaspeller --only-errors --ignore-digits --find-repeat-words --file-extensions ".html,.md,.njk,.txt,.css" ../$PROJECT_NAME/src/
+		npx yaspeller --only-errors --ignore-digits --find-repeat-words --file-extensions ".html,.md,.njk,.txt,.css,.sass,.scss" ../$PROJECT_NAME/src/
 		;;
-	validator)
+	node-w3c-validator)
 		npx node-w3c-validator --input ../$PROJECT_NAME/site/**/*.html --format lint --verbose --errors-only
 		;;
 	htmlhint)
 		npx htmlhint "../$PROJECT_NAME/site/**/*.html"
 		;;
-	bem)
+	bem-validate)
 		npx bem-validate ../$PROJECT_NAME/site/index.html
 		;;
 	sharp)
-		node sharp ../$PROJECT_NAME/src/img/ ../$PROJECT_NAME/src/img_RAW/
+		node sharp ../$PROJECT_NAME/src/img_RAW/ ../$PROJECT_NAME/src/img/
 		;;
 esac

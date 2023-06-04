@@ -1,13 +1,15 @@
 const htmlMinifierTerser = require('html-minifier-terser');
-const lightningCSS = require("@11tyrocks/eleventy-plugin-lightningcss");
+const lightningCSS = require('@11tyrocks/eleventy-plugin-lightningcss');
 // const esbuild = require('esbuild');
-const pluginBundle = require("@11ty/eleventy-plugin-bundle");
-const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const pluginBundle = require('@11ty/eleventy-plugin-bundle');
+const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
 const typograf = require('typograf');
+const markdownIt = require('markdown-it')({ html: true });
 
 
 
-module.exports = function (eleventyConfig) {
+
+module.exports = function(eleventyConfig) {
 
 	//------------------------------------------------
 	// Настройки Eleventy: ---------------------------
@@ -15,28 +17,28 @@ module.exports = function (eleventyConfig) {
 
 	// Настройка параметров сервера: -----------------
 	eleventyConfig.setServerOptions({
-		//watch: ["site/**/*.css"],
+		//watch: ['site/**/*.css'],
 		showAllHosts: true, // Показать локальные IP-адреса сети для тестирования устройств.
 	});
 	// Задержка в отслеживании (watch):
 	eleventyConfig.setWatchThrottleWaitTime(1000); // 0ms default.
 
 	// Отслеживание (watch) картинок для конвейера (pipeline):
-	//eleventyConfig.addWatchTarget("img/**/*.{svg,avif,webp,png,jpg,jpeg}");
+	//eleventyConfig.addWatchTarget('img/**/*.{svg,avif,webp,png,jpg,jpeg}');
 
 
 	// Плагины: --------------------------------------
 
 	eleventyConfig.addPlugin(pluginBundle, {
 		// Папка в выходном каталоге куда будут записываться файлы пакетов:
-		toFileDirectory: "bundle",
-		// Дополнительные имена бандлов ("css", "js", "html" есть по умолчанию):
+		toFileDirectory: 'bundle',
+		// Дополнительные имена бандлов ('css', 'js', 'html' есть по умолчанию):
 		bundles: [],
 		// Array of async-friendly callbacks to transform bundle content.
 		// Работают с getBundle и getBundleFileUrl:
 		transforms: [],
 		// Array of bundle names eligible for duplicate bundle hoisting
-		hoistDuplicateBundlesFor: [], // e.g. ["css", "js"]
+		hoistDuplicateBundlesFor: [], // e.g. ['css', 'js']
 	});
 
 	eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -50,13 +52,26 @@ module.exports = function (eleventyConfig) {
 
 	// Фильтр для удобочитаемой русской даты:
 	// Использование: "{{ date | readableDate }}", результат: "13 ноября 2022":
-	eleventyConfig.addFilter("readableDate", function (value) {
-		return value.toLocaleString("ru", {
-			day: "numeric",
-			month: "long", // long | short.
-			year: "numeric"
-		}).replace(" г.", "");
+	eleventyConfig.addFilter('readableDate', function(value) {
+		return value.toLocaleString('ru', {
+			day: 'numeric',
+			month: 'long', // long | short.
+			year: 'numeric'
+		}).replace(' г.', '');
 	});
+
+	// Добавление функционала маркдауна {{ content | markdown | safe }}
+	eleventyConfig.addFilter('markdown', function(value) {
+		return markdownIt.render(value);
+	});
+
+	// Добавление функционала маркдауна инлайн {{ post.title | markdownInline | safe }}
+	eleventyConfig.addFilter('markdownInline', function(value) {
+		return markdownIt.renderInline(value);
+	});
+
+	eleventyConfig.setLibrary('md', markdownIt);
+
 
 
 
@@ -65,11 +80,11 @@ module.exports = function (eleventyConfig) {
 	//------------------------------------------------
 
 	// Добавить текущий год {% year %}:
-	eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+	eleventyConfig.addShortcode('year', () => `${new Date().getFullYear()}`);
 
 	// Генерация картинки OpenGraph для каждой страницы {% opengraph _site.siteUrl %}:
-	eleventyConfig.addShortcode("opengraph", function (baseUrl) {
-		const pathPrefix = eleventyConfig.pathPrefix || "";
+	eleventyConfig.addShortcode('encodeuri', function (baseUrl) {
+		const pathPrefix = eleventyConfig.pathPrefix || '';
 		const encodedURL = encodeURIComponent(baseUrl + pathPrefix + this.page.url);
 		return encodedURL;
 	});
@@ -79,21 +94,10 @@ module.exports = function (eleventyConfig) {
 	// Обработка HTML: -------------------------------
 	//------------------------------------------------
 
-
-	// Больше правил можно найти здесь: https://github.com/typograf/typograf/blob/dev/docs/RULES.ru.md
-	// Создаём фильтр для шаблонов {{ content | typograf | safe }}:
-	//eleventyConfig.addFilter('typograf', function(content) {
-	//	return typograf.execute(content);
-	//});
-
 	eleventyConfig.addTransform('typograf', function (content, path) {
 		if (path.endsWith('.html') || path.endsWith('.md')) {
 				const tp = new typograf({
 					locale: ['ru', 'en-US'],
-					safeTags: [
-						['<\\?php', '\\?>'],
-						['<no-typography>', '</no-typography>']
-					],
 					disableRule: [
 						//'common/nbsp/afterShortWord',// Неразрывный пробел после короткого слова (№12)
 						'common/number/fraction',// 1/2 → ½, 1/4 → ¼, 3/4 → ¾ (№19)
@@ -123,6 +127,10 @@ module.exports = function (eleventyConfig) {
 						//'ru/optalign/comma',// для запятой (№94)
 						//'ru/optalign/quote',// для открывающей кавычки (№95)
 						//'ru/other/accent',// Замена заглавной буквы на строчную с добавлением ударения (№96)
+					],
+					safeTags: [
+						['<\\?php', '\\?>'],
+						['<no-typography>', '</no-typography>']
 					]
 				});
 				return tp.execute(content);
@@ -170,7 +178,7 @@ module.exports = function (eleventyConfig) {
 
 	// Добавление плагина LightningCSS:
 	eleventyConfig.addPlugin(lightningCSS, {
-		//importPrefix: "_", // Тип: строка, по умолчанию: "_".
+		//importPrefix: '_', // Тип: строка, по умолчанию: '_'.
 		//nesting: true, // Тип: логический, по умолчанию: true.
 		//customMedia: true, // Тип: логический, по умолчанию: true.
 		//minify: true, // Тип: логический, по умолчанию: true.
@@ -221,14 +229,14 @@ module.exports = function (eleventyConfig) {
 	// Прямое копирование файлов и папок: ------------
 	//------------------------------------------------
 
-	eleventyConfig.addPassthroughCopy("src/img");
-	//eleventyConfig.addPassthroughCopy("src/img/**/*.{svg,avif,webp,jxl,jpg,jpeg,png,tif,tiff,bmp,gif}");
-	eleventyConfig.addPassthroughCopy("src/fls");
-	eleventyConfig.addPassthroughCopy("src/*.{js,php,txt,xml,json,webmanifest,htaccess,ico}");
+	eleventyConfig.addPassthroughCopy('src/img');
+	//eleventyConfig.addPassthroughCopy('src/img/**/*.{svg,avif,webp,jxl,jpg,jpeg,png,tif,tiff,bmp,gif}');
+	eleventyConfig.addPassthroughCopy('src/fls');
+	eleventyConfig.addPassthroughCopy('src/*.{js,php,txt,xml,json,webmanifest,htaccess,ico}');
 
 	//eleventyConfig.addPassthroughCopy({
-	//	"./public/": "/",
-	//	"./node_modules/prismjs/themes/prism-okaidia.css": "/css/prism-okaidia.css"
+	//	'./public/': '/',
+	//	'./node_modules/prismjs/themes/prism-okaidia.css': '/css/prism-okaidia.css'
 	//});
 
 
@@ -239,18 +247,18 @@ module.exports = function (eleventyConfig) {
 	//------------------------------------------------
 
 	return {
-		//pathPrefix: "/kirshmelev.ru/", // Указываем имя репозитория на Github (можно оставить пустым, если не используется).
+		//pathPrefix: '/kirshmelev.ru/', // Указываем имя репозитория на Github (можно оставить пустым, если не используется).
 		addPassthroughFileCopy: true,
-		dataTemplateEngine: "njk",
-		markdownTemplateEngine: "njk",
-		htmlTemplateEngine: "njk",
-		templateFormats: ["html", "njk", "md"],
+		dataTemplateEngine: 'njk',
+		markdownTemplateEngine: 'njk',
+		htmlTemplateEngine: 'njk',
+		templateFormats: ['html', 'njk', 'md'],
 		dir: {
-			input: "src",
-			output: "site",
-			includes: "_includes",
-			layouts: "_includes",
-			data: "_includes"
+			input: 'src',
+			output: 'site',
+			includes: '_includes',
+			layouts: '_includes',
+			data: '_includes'
 		}
 	};
 };

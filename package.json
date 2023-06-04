@@ -11,9 +11,9 @@
 		"build": "rm -rf site && npx @11ty/eleventy",
 		"sl": "bash run-scripts.sh stylelint",
 		"ys": "bash run-scripts.sh yaspeller",
-		"w3c": "bash run-scripts.sh validator",
+		"w3c": "bash run-scripts.sh node-w3c-validator",
 		"hh": "bash run-scripts.sh htmlhint",
-		"bem": "bash run-scripts.sh bem",
+		"bem": "bash run-scripts.sh bem-validate",
 		"sharp": "bash run-scripts.sh sharp"
 	},
 	"browserslist": [
@@ -30,6 +30,7 @@
 		"@11tyrocks/eleventy-plugin-lightningcss": "^1.1.2",
 		"esbuild": "^0.17.19",
 		"html-minifier-terser": "^7.2.0",
+		"markdown-it": "^13.0.1",
 		"typograf": "^7.1.0"
 	}
 }

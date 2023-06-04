@@ -18,8 +18,7 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
 	<link rel="manifest" href="/manifest.json">
 	{% if _site.siteThemeColor %}
-	<meta name="theme-color" content="{{ _site.siteThemeColor }}">
-
+	<meta name="theme-color" content="{{ _site.siteThemeColor or '#fff' }}">
 	{#<meta name="theme-color" media="(prefers-color-scheme: light)" content="#c1f07c">
 	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#9874d3">#}
 	{% endif %}
@@ -40,9 +39,7 @@
 	<meta property="og:description" content="{{ description or _site.siteDescription }}">
 	<meta property="og:site_name" content="{{ _site.siteName }}">
 	<meta property="og:locale" content="{{ _site.siteLang or 'ru' }}">
-	{#<meta property="og:image" content="{{ _site.siteUrl }}/img/og.png">#}
-	<meta property="og:image" content="https://v1.screenshot.11ty.dev/{% opengraph _site.siteUrl %}/opengraph/bigger/">
-
+	<meta property="og:image" content="https://v1.screenshot.11ty.dev/{% encodeuri _site.siteUrl %}/opengraph/bigger/">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
 	<meta property="og:image:alt" content="Скриншот веб-страницы {{ _site.siteUrl + page.url }}">
@@ -70,11 +67,6 @@
 
 	<!-- Скрипт компонентов Bootstrap: -->
 	<script defer src="/bootstrap.bundle.min.js"></script>
-
-
-	<!-- Yandex.Metrika counter -->
-	<!--<noscript></noscript>-->
-	<!-- /Yandex.Metrika counter -->
 
 
 	<noscript class="noscript">У вас в браузере отключён JavaScript</noscript>
