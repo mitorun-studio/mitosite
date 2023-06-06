@@ -6,22 +6,28 @@ SCRIPT_NAME=$1
 # Run the specified script with the specified project name
 cd ../plugins
 case $SCRIPT_NAME in
-	stylelint)
-		npx stylelint ../$PROJECT_NAME/src/**/*.css --fix
-		;;
-	yaspeller)
-		npx yaspeller --only-errors --ignore-digits --find-repeat-words --file-extensions ".html,.md,.njk,.txt,.css,.sass,.scss" ../$PROJECT_NAME/src/
-		;;
-	node-w3c-validator)
-		npx node-w3c-validator --input ../$PROJECT_NAME/site/**/*.html --format lint --verbose --errors-only
-		;;
-	htmlhint)
-		npx htmlhint "../$PROJECT_NAME/site/**/*.html"
-		;;
-	bem-validate)
-		npx bem-validate ../$PROJECT_NAME/site/index.html
-		;;
-	sharp)
-		node sharp ../$PROJECT_NAME/src/img_RAW/ ../$PROJECT_NAME/src/img/
-		;;
+  stylelint)
+    npx stylelint ../$PROJECT_NAME/src/**/*.css --fix
+    ;;
+  yaspeller)
+    npx yaspeller --only-errors --ignore-digits --find-repeat-words --file-extensions ".html,.md,.njk,.txt,.css" ../$PROJECT_NAME/src/
+    ;;
+  validator)
+    npx node-w3c-validator --input ../$PROJECT_NAME/site/**/*.html --format lint --verbose --errors-only
+    ;;
+  htmlhint)
+    npx htmlhint "../$PROJECT_NAME/site/**/*.html"
+    ;;
+  bem)
+    npx bem-validate ../$PROJECT_NAME/site/index.html
+    ;;
+  sharp)
+    node sharp ../$PROJECT_NAME/src/img/ ../$PROJECT_NAME/src/img_RAW/
+    ;;
+  webp)
+    node sharp ../$PROJECT_NAME/src/img/ ../$PROJECT_NAME/src/img_RAW/ webp
+    ;;
+  avif)
+    node sharp ../$PROJECT_NAME/src/img/ ../$PROJECT_NAME/src/img_RAW/ avif
+    ;;
 esac

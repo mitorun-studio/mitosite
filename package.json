@@ -14,7 +14,9 @@
 		"w3c": "bash run-scripts.sh node-w3c-validator",
 		"hh": "bash run-scripts.sh htmlhint",
 		"bem": "bash run-scripts.sh bem-validate",
-		"sharp": "bash run-scripts.sh sharp"
+		"sharp": "bash run-scripts.sh sharp",
+		"webp": "bash run-scripts.sh webp",
+		"avif": "bash run-scripts.sh avif"
 	},
 	"browserslist": [
 		"last 3 version",
