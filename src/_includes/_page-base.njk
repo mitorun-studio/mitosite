@@ -1,4 +1,4 @@
-<!doctype html><!-- Сайт https://template/ -->
+<!doctype html><!-- Сайт template -->
 <html lang="{{ _site.siteLang or 'ru' }}" prefix="og: https://ogp.me/ns#">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
 	{% if keywords %}
 	<meta name="keywords" content="{{ keywords }}">
 	{% endif %}
-	<meta name="author" content="Oleg Mitorun">
+	<meta name="author" content="Mitorun Studio">
 	<meta name="generator" content="{{ eleventy.generator }}">
 
 	<link rel="stylesheet" href="/mitosite.css">
@@ -52,7 +52,11 @@
 	<a class="button vhf skip-link" href="#main">Перейти к основному контенту</a>
 
 
+
+
 	{% include "_header.njk" %}
+
+
 
 
 	<main class="main" id="main" tabindex="-1">
@@ -62,14 +66,16 @@
 	</main>
 
 
+
+
 	{% include "_footer.njk" %}
 
 
-	<!-- Скрипт компонентов Bootstrap: -->
-	<script defer src="/bootstrap.bundle.min.js"></script>
 
 
-	<noscript class="noscript">У вас в браузере отключён JavaScript</noscript>
+	{% include "_scripts.njk" %}
+
+
 
 
 </body>

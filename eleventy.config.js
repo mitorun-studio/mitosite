@@ -96,44 +96,44 @@ module.exports = function(eleventyConfig) {
 
 	eleventyConfig.addTransform('typograf', function (content, path) {
 		if (path.endsWith('.html') || path.endsWith('.md')) {
-				const tp = new typograf({
-					locale: ['ru', 'en-US'],
-					disableRule: [
-						//'common/nbsp/afterShortWord',// Неразрывный пробел после короткого слова (№12)
-						'common/number/fraction',// 1/2 → ½, 1/4 → ¼, 3/4 → ¾ (№19)
-						'common/number/mathSigns',// != → ≠, <= → ≤, >= → ≥, ~= → ≅, +- → ± (№20)
-						//'common/number/times',// x → × (10 x 5 → 10×5) (№21)
-						//'common/punctuation/hellip	',// Замена трёх точек на многоточие (№26)
-						'common/punctuation/quote',// Расстановка кавычек правильного вида (№27)
-						'common/space/replaceTab',// Замена таба на 4 пробела (№45)
-						'common/symbols/cf',// Добавление ° к C и F (№50)
-						'en-US/dash/main',// Замена дефиса на длинное тире (№52)
-						'ru/dash/main',// Замена дефиса на тире (№63)
-						'ru/dash/surname',// Сокращения с помощью тире (№65)
-						'ru/date/fromISO',// Преобразование дат YYYY-MM-DD к виду DD.MM.YYYY (№71)
-						'ru/number/comma',// Замена точки на запятую в числах (№91)
-						//'ru/other/phone-number',// Форматирование телефонных номеров "+7 495 123-45-67" (№97)
-						'ru/punctuation/exclamation',// !! → ! (№99)
-						'ru/punctuation/exclamationQuestion',// !? → ?! (№100)
-						'ru/punctuation/hellipQuestion',// «?…» → «?..», «!…» → «!..», «…,» → «…» (№101)
-						'ru/typo/switchingKeyboardLayout'// Замена латинских букв на русские. Опечатки, возникающие при переключении клавиатурной раскладки (№105)
-					],
-					enableRule: [
-						//'common/html/stripTags',// Удаление HTML-тегов (№7)
-						//'common/nbsp/afterNumber',// Неразрывный пробел между числом и словом (№9)
-						//'common/nbsp/replaceNbsp',// Замена неразрывного пробела на обычный перед типографированием (№17)
-						//'common/number/digitGrouping',// Разбивать длинные числа по разрядам (№18)
-						//'ru/optalign/bracket',// для открывающей скобки (№93)
-						//'ru/optalign/comma',// для запятой (№94)
-						//'ru/optalign/quote',// для открывающей кавычки (№95)
-						//'ru/other/accent',// Замена заглавной буквы на строчную с добавлением ударения (№96)
-					],
-					safeTags: [
-						['<\\?php', '\\?>'],
-						['<no-typography>', '</no-typography>']
-					]
-				});
-				return tp.execute(content);
+			const tp = new typograf({
+				locale: ['ru', 'en-US'],
+				disableRule: [
+					//'common/nbsp/afterShortWord',// Неразрывный пробел после короткого слова (№12)
+					'common/number/fraction',// 1/2 → ½, 1/4 → ¼, 3/4 → ¾ (№19)
+					'common/number/mathSigns',// != → ≠, <= → ≤, >= → ≥, ~= → ≅, +- → ± (№20)
+					//'common/number/times',// x → × (10 x 5 → 10×5) (№21)
+					//'common/punctuation/hellip	',// Замена трёх точек на многоточие (№26)
+					'common/punctuation/quote',// Расстановка кавычек правильного вида (№27)
+					'common/space/replaceTab',// Замена таба на 4 пробела (№45)
+					'common/symbols/cf',// Добавление ° к C и F (№50)
+					'en-US/dash/main',// Замена дефиса на длинное тире (№52)
+					'ru/dash/main',// Замена дефиса на тире (№63)
+					'ru/dash/surname',// Сокращения с помощью тире (№65)
+					'ru/date/fromISO',// Преобразование дат YYYY-MM-DD к виду DD.MM.YYYY (№71)
+					'ru/number/comma',// Замена точки на запятую в числах (№91)
+					//'ru/other/phone-number',// Форматирование телефонных номеров "+7 495 123-45-67" (№97)
+					'ru/punctuation/exclamation',// !! → ! (№99)
+					'ru/punctuation/exclamationQuestion',// !? → ?! (№100)
+					'ru/punctuation/hellipQuestion',// «?…» → «?..», «!…» → «!..», «…,» → «…» (№101)
+					'ru/typo/switchingKeyboardLayout'// Замена латинских букв на русские. Опечатки, возникающие при переключении клавиатурной раскладки (№105)
+				],
+				enableRule: [
+					//'common/html/stripTags',// Удаление HTML-тегов (№7)
+					//'common/nbsp/afterNumber',// Неразрывный пробел между числом и словом (№9)
+					//'common/nbsp/replaceNbsp',// Замена неразрывного пробела на обычный перед типографированием (№17)
+					//'common/number/digitGrouping',// Разбивать длинные числа по разрядам (№18)
+					//'ru/optalign/bracket',// для открывающей скобки (№93)
+					//'ru/optalign/comma',// для запятой (№94)
+					//'ru/optalign/quote',// для открывающей кавычки (№95)
+					//'ru/other/accent',// Замена заглавной буквы на строчную с добавлением ударения (№96)
+				],
+				safeTags: [
+					['<\\?php', '\\?>'],
+					['<no-typography>', '</no-typography>']
+				]
+			});
+			return tp.execute(content);
 		}
 		return content;
 	});

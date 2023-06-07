@@ -1,5 +1,5 @@
 {
-	"name": "template",
+	"name": "mitosite",
 	"version": "1.0.0",
 	"description": "",
 	"keywords": [],
@@ -16,7 +16,8 @@
 		"bem": "bash run-scripts.sh bem-validate",
 		"sharp": "bash run-scripts.sh sharp",
 		"webp": "bash run-scripts.sh webp",
-		"avif": "bash run-scripts.sh avif"
+		"avif": "bash run-scripts.sh avif",
+		"tg": "bash run-scripts.sh typograf"
 	},
 	"browserslist": [
 		"last 3 version",

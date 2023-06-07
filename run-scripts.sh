@@ -22,12 +22,15 @@ case $SCRIPT_NAME in
     npx bem-validate ../$PROJECT_NAME/site/index.html
     ;;
   sharp)
-    node sharp ../$PROJECT_NAME/src/img/ ../$PROJECT_NAME/src/img_RAW/
+    node sharp ../$PROJECT_NAME/src/img_RAW/ ../$PROJECT_NAME/src/img/
     ;;
   webp)
-    node sharp ../$PROJECT_NAME/src/img/ ../$PROJECT_NAME/src/img_RAW/ webp
+    node sharp ../$PROJECT_NAME/src/img_RAW/ ../$PROJECT_NAME/src/img/ webp
     ;;
   avif)
-    node sharp ../$PROJECT_NAME/src/img/ ../$PROJECT_NAME/src/img_RAW/ avif
+    node sharp ../$PROJECT_NAME/src/img_RAW/ ../$PROJECT_NAME/src/img/ avif
+    ;;
+  typograf)
+    node typograf.js ../$PROJECT_NAME/site/
     ;;
 esac
