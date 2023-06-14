@@ -1,5 +1,5 @@
 /*------------------------------------------------
----------- Сайт template: ------------------------
+--- Сайт template: -------------------------------
 ------------------------------------------------*/
 
 @font-face {
@@ -19,7 +19,7 @@
 }
 
 /*------------------------------------------------
----------- Переменные: ---------------------------
+--- Переменные: ----------------------------------
 ------------------------------------------------*/
 
 :root {
@@ -63,12 +63,12 @@
 	--grey-lightest: hsla(0, 0%, 0%, 0.05);
 	--color-main: hsl(225, 73%, 57%);
 	--color-second: hsl(16, 100%, 66%);
-	--color-success: hsl(139, 100%, 19%);
+	/* --color-success: hsl(139, 100%, 19%);
 	--color-danger: hsl(2, 100%, 28%);
 	--color-warning: hsl(45, 100%, 51%);
 	--bg-success: hsla(139, 100%, 19%, 0.1);
 	--bg-danger: hsla(2, 100%, 28%, 0.1);
-	--bg-warning: hsla(45, 100%, 51%, 0.1);
+	--bg-warning: hsla(45, 100%, 51%, 0.1); */
 
 	--border: 1px solid var(--color);
 	--border-radius-m: 8px;
@@ -122,7 +122,7 @@
 }
 
 /*------------------------------------------------
----------- Базовые стили: ------------------------
+--- Базовые стили: -------------------------------
 ------------------------------------------------*/
 
 *,
@@ -145,7 +145,10 @@ html {
 }
 
 body {
+	max-width: 1920px;
 	min-height: 100vh;
+	margin-left: auto;
+	margin-right: auto;
 	font-weight: var(--font-weight-m, 400);
 	font-size: var(--font-size-m, 16px);
 	line-height: var(--line-height-m, 1.5);
@@ -178,12 +181,14 @@ svg {
 }
 
 button,
-summary {
+summary,
+select,
+option {
 	cursor: pointer;
 }
 
 /*------------------------------------------------
----------- Типографика: --------------------------
+--- Типографика: ---------------------------------
 ------------------------------------------------*/
 
 h1,
@@ -202,8 +207,22 @@ h6,
 	font-weight: var(--font-weight-xl, 700);
 	line-height: var(--line-height-xs, 1.2);
 	font-family: var(--font-family-heading, sans-serif);
-	text-wrap: balance;
+	/* overflow-wrap: normal; */
+	/* text-wrap: balance; */
+	hyphens: manual;/* вручную расставлять мягкий перенос с тире &shy; */
 }
+
+/* @container (width >= 23ch) {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		overflow-wrap: normal;
+		text-wrap: balance;
+	}
+} */
 
 h1,
 .h1 {
@@ -250,64 +269,9 @@ a {
 	color: initial;
 }*/
 
-ul[class]:not(.list),
-ol[class]:not(.list) {
+ul,
+ol {
 	list-style: none;
-}
-
-/*ul:not([class]),
-ol:not([class]),*/
-.list {
-	margin-bottom: 1em;
-	padding-left: 30px;
-}
-
-/*ul:not([class]) li:not([class]),
-ol:not([class]) li:not([class])*/
-.list li {
-	margin-bottom: 0.5em;
-}
-
-b,
-strong,
-.b {
-	font-weight: var(--font-weight-l, 600);
-}
-
-i,
-.i {
-	font-style: oblique;
-}
-
-kbd,
-code,
-pre,
-samp {
-	font-size: 1em;
-	font-family: var(--font-family-mono, monospace);
-	direction: ltr;
-	white-space: pre-wrap;
-	word-wrap: break-word;
-	word-break: break-all;
-	unicode-bidi: bidi-override;
-}
-
-kbd:not([class]),
-.kbd,
-code:not([class]),
-.code {
-	margin: 0 0.12em;
-	padding: 0.1em 0.3em;
-	background: var(--grey-lightest);
-	border-radius: 0.25em;
-}
-
-hr,
-.hr {
-	margin: 16px 0;
-	color: inherit;
-	border: 0;
-	border-top: 1px solid var(--grey);
 }
 
 img,
@@ -328,12 +292,17 @@ svg {
 }
 
 /*------------------------------------------------
----------- Служебные классы: ---------------------
+--- Служебные классы: ----------------------------
 ------------------------------------------------*/
 
 .container {
 	padding-right: max(calc(50% - var(--container, 1200px) / 2), var(--container-padding, 14px));
 	padding-left: max(calc(50% - var(--container, 1200px) / 2), var(--container-padding, 14px));
+}
+
+.section {
+	padding-top: var(--margin-l);
+	padding-bottom: var(--margin-l);
 }
 
 .mb-xl {
@@ -389,10 +358,6 @@ svg {
 	/*border: 1px solid var(--color-danger, red);*/
 }
 
-.scroll {
-	overflow: auto;
-}
-
 .relative {
 	position: relative;
 }
@@ -403,27 +368,11 @@ svg {
 	inset: 0;
 }
 
-/*.icon {
-	width: 32px;
-	height: 32px;
-	color: currentcolor;
-	fill: currentcolor;
-	fill-rule: evenodd;
-	clip-rule: evenodd;
-}
-
-@media (min-width: 992px) {
-	.icon {
-		width: 36px;
-		height: 36px;
-	}
-}*/
-
 
 
 
 /*------------------------------------------------
----------- Уникальное оформление сайта: ----------
+--- Уникальное оформление сайта: -----------------
 ------------------------------------------------*/
 
 
@@ -439,7 +388,7 @@ svg {
 
 
 /*------------------------------------------------
----------- Дополнительные стили: -----------------
+--- Дополнительные стили: ------------------------
 ------------------------------------------------*/
 
 /* Код для визуально-скрытых (vh = visually-hidden) элементов html и vhf = visually-hidden-focusable: */
