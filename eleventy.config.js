@@ -232,7 +232,7 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy('src/img');
 	//eleventyConfig.addPassthroughCopy('src/img/**/*.{svg,avif,webp,jxl,jpg,jpeg,png,tif,tiff,bmp,gif}');
 	eleventyConfig.addPassthroughCopy('src/fls');
-	eleventyConfig.addPassthroughCopy('src/*.{js,php,txt,xml,json,webmanifest,htaccess,ico}');
+	eleventyConfig.addPassthroughCopy('src/*.{js,php,txt,xml,json,webmanifest,htaccess,svg,ico}');
 
 	//eleventyConfig.addPassthroughCopy({
 	//	'./public/': '/',

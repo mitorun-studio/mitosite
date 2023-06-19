@@ -145,6 +145,8 @@ html {
 }
 
 body {
+	display: flex;
+	flex-direction: column;
 	max-width: 1920px;
 	min-height: 100vh;
 	margin-left: auto;
@@ -298,6 +300,11 @@ svg {
 .container {
 	padding-right: max(calc(50% - var(--container, 1200px) / 2), var(--container-padding, 14px));
 	padding-left: max(calc(50% - var(--container, 1200px) / 2), var(--container-padding, 14px));
+}
+
+.main {
+	flex-grow: 1;
+	/* для прижатия футера */
 }
 
 .section {

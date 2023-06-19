@@ -1,6 +1,7 @@
 <!doctype html><!-- Сайт template -->
 <html lang="{{ _site.siteLang or 'ru' }}" prefix="og: https://ogp.me/ns#">
 <head>
+	{#{% getBundle "html", "head" %}#}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 
@@ -40,8 +41,8 @@
 	<meta property="og:site_name" content="{{ _site.siteName }}">
 	<meta property="og:locale" content="{{ _site.siteLang or 'ru' }}">
 	<meta property="og:image" content="https://v1.screenshot.11ty.dev/{% encodeuri _site.siteUrl %}/opengraph/bigger/">
-	<meta property="og:image:width" content="1200">
-	<meta property="og:image:height" content="630">
+	<!-- <meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630"> -->
 	<meta property="og:image:alt" content="Скриншот веб-страницы {{ _site.siteUrl + page.url }}">
 	<meta property="og:url" content="{{ _site.siteUrl + page.url }}">
 	<link rel="canonical" href="{{ _site.siteUrl + page.url }}">
