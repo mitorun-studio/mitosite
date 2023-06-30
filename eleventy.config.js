@@ -57,7 +57,7 @@ module.exports = function(eleventyConfig) {
 			day: 'numeric',
 			month: 'long', // long | short.
 			year: 'numeric'
-		}).replace(' г.', '');
+		}).replace(' г.', '').replace('г.', '');
 	});
 
 	// Добавление функционала маркдауна {{ content | markdown | safe }}
