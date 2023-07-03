@@ -77,6 +77,7 @@
 	--ease-bounce-l: cubic-bezier(0.2, 1, 0.8, 3);
 	--ease-bounce-xl: cubic-bezier(0.08, 10, 0.94, 20);
 	tab-size: 2;
+	color-scheme: light dark;
 }
 
 @media (width >= 576px) {
@@ -138,7 +139,7 @@
 	outline-offset: 2px;
 }
 
-/* :focus-visible {
+/* *:focus-visible {
 	outline: -webkit-focus-ring-color auto 1px;
 } */
 
@@ -378,10 +379,24 @@ svg {
 	position: relative;
 }
 
+/* Растягивание ссылки на всю карточку (для самой карточки надо задать position: relative !): */
+
 .stretch::before {
 	content: '';
 	position: absolute;
 	inset: 0;
+	/* z-index: 1; */
+}
+
+.skip-link {
+	position: absolute;
+	top: 16px;
+	left: 1px;
+	z-index: 1999;
+}
+
+main:focus {
+	outline: 0;
 }
 
 
