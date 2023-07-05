@@ -1,4 +1,8 @@
 ---
+eleventyExcludeFromCollections: true
+layout: false
+permalink: false
+
 title: 'Это заголовок H1, а также это идёт в метатег title'
 description: 'Это описание в метатег description'
 postTitle: 'Заголовок поста'
@@ -6,10 +10,6 @@ postDescription: 'Описание поста.'
 blogTag: HTML
 author: 'Иван Иванович'
 date: 2023-04-20
-
-eleventyExcludeFromCollections: true
-layout: false
-permalink: false
 ---
 
 # Заголовок H1 (Осторожно! На этом сайте заголовок H1 берётся из "технического" блока выше, отдельно его не нужно больше прописывать)

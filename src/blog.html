@@ -18,12 +18,12 @@ layout: _page-base.njk
 		<li class="blog__card">
 			<img class="blog__img" src="/img/blog/{{ blog.page.fileSlug }}.jpg" alt="Обложка статьи {{ blog.data.title }}">
 
-			<h3 class="blog__title h3">{{ blog.data.title }}</h3>
+			<h3 class="blog__title h3"><a class="works__card" href="{{ blog.page.url }}">{{ blog.data.title }}</a></h3>
 
-			<p class="blog__tag">{{ blog.data.blogTag }}</p>
+			<p class="blog__desc">{{ blog.data.description }}</p>
 
 			<div class="post__author">
-				<time datetime="{{ date.toISOString().slice(0, 10) }}">{{ blog.data.date | readableDate }}</time>
+				<time datetime="{{ blog.data.date.toISOString().slice(0, 10) }}">{{ blog.data.date | readableDate }}</time>
 				<address>{{ blog.data.author or 'Олег Миторун'}}</address>
 			</div>
 		</li>

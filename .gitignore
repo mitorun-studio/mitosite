@@ -21,6 +21,5 @@ node_modules
 npm-debug.*
 npm-debug.log*
 site
-src/_includes/css
 yarn-debug.log*
 yarn-error.log*

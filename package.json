@@ -31,9 +31,8 @@
 		"@11ty/eleventy-navigation": "^0.3.5",
 		"@11ty/eleventy-plugin-bundle": "^1.0.4",
 		"@11tyrocks/eleventy-plugin-lightningcss": "^1.1.2",
-		"esbuild": "^0.17.19",
+		"esbuild": "^0.18.11",
 		"html-minifier-terser": "^7.2.0",
-		"markdown-it": "^13.0.1",
-		"typograf": "^7.1.0"
+		"markdown-it": "^13.0.1"
 	}
 }

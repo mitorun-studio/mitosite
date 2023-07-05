@@ -19,17 +19,17 @@ case $SCRIPT_NAME in
 		npx htmlhint "../$PROJECT_NAME/site/**/*.html"
 		;;
 	bem)
-		npx bem-validate ../$PROJECT_NAME/site/index.html
+		npx bem-validate ../$PROJECT_NAME/site/**/*.html
 		;;
 	sharp)
-		node sharp ../$PROJECT_NAME/src/img_RAW/ ../$PROJECT_NAME/src/img/
+		node sharp ../$PROJECT_NAME/src/img/ ../$PROJECT_NAME/site/img/
 		# node sharp ../$PROJECT_NAME/SOURCE/img_RAW/ ../$PROJECT_NAME/src/img/
 		;;
 	webp)
-		node sharp ../$PROJECT_NAME/src/img_RAW/ ../$PROJECT_NAME/src/img/ webp
+		node sharp ../$PROJECT_NAME/src/img/ ../$PROJECT_NAME/site/img/ webp
 		;;
 	avif)
-		node sharp ../$PROJECT_NAME/src/img_RAW/ ../$PROJECT_NAME/src/img/ avif
+		node sharp ../$PROJECT_NAME/src/img/ ../$PROJECT_NAME/site/img/ avif
 		;;
 	typograf)
 		node typograf.js ../$PROJECT_NAME/site/

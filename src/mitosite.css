@@ -48,8 +48,11 @@
 	--padding-form: 14px;
 	/*--padding-form-s: 10px;*/
 	--margin-xl: 112px;
+	--margin-l2: calc(var(--margin-l) * 1.5);
 	--margin-l: 56px;
+	--margin-m2: calc(var(--margin-m) * 1.5);
 	--margin-m: 28px;
+	--margin-s2: calc(var(--margin-s) * 1.5);
 	--margin-s: 14px;
 	--margin-xs: 6px;
 
