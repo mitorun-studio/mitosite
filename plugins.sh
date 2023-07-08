@@ -23,7 +23,6 @@ case $SCRIPT_NAME in
 		;;
 	sharp)
 		node sharp ../$PROJECT_NAME/src/img/ ../$PROJECT_NAME/site/img/
-		# node sharp ../$PROJECT_NAME/SOURCE/img_RAW/ ../$PROJECT_NAME/src/img/
 		;;
 	webp)
 		node sharp ../$PROJECT_NAME/src/img/ ../$PROJECT_NAME/site/img/ webp

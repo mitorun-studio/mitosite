@@ -9,15 +9,15 @@
 	"scripts": {
 		"start": "rm -rf site && npx @11ty/eleventy --serve --quiet",
 		"build": "rm -rf site && npx @11ty/eleventy",
-		"sl": "bash run-scripts.sh stylelint",
-		"ys": "bash run-scripts.sh yaspeller",
-		"w3c": "bash run-scripts.sh node-w3c-validator",
-		"hh": "bash run-scripts.sh htmlhint",
-		"bem": "bash run-scripts.sh bem-validate",
-		"sharp": "bash run-scripts.sh sharp",
-		"webp": "bash run-scripts.sh webp",
-		"avif": "bash run-scripts.sh avif",
-		"tg": "bash run-scripts.sh typograf"
+		"sl": "bash plugins.sh stylelint",
+		"ys": "bash plugins.sh yaspeller",
+		"w3c": "bash plugins.sh node-w3c-validator",
+		"hh": "bash plugins.sh htmlhint",
+		"bem": "bash plugins.sh bem-validate",
+		"sharp": "bash plugins.sh sharp",
+		"webp": "bash plugins.sh webp",
+		"avif": "bash plugins.sh avif",
+		"tg": "bash plugins.sh typograf"
 	},
 	"browserslist": [
 		"last 3 version",
