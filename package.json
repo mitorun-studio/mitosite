@@ -9,6 +9,8 @@
 	"scripts": {
 		"start": "rm -rf site && npx @11ty/eleventy --serve --quiet",
 		"build": "rm -rf site && npx @11ty/eleventy",
+		"prod": "rm -rf site && npx @11ty/eleventy && node sharp ./src/img/ ./site/img/ && node typograf.js ./site/",
+		
 		"sl": "bash plugins.sh stylelint",
 		"ys": "bash plugins.sh yaspeller",
 		"w3c": "bash plugins.sh node-w3c-validator",

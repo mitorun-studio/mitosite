@@ -2,6 +2,7 @@ const htmlMinifierTerser = require('html-minifier-terser');
 const lightningCSS = require('@11tyrocks/eleventy-plugin-lightningcss');
 // const esbuild = require('esbuild');
 const pluginBundle = require('@11ty/eleventy-plugin-bundle');
+const { EleventyHtmlBasePlugin } = require('@11ty/eleventy');
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
 const markdownIt = require('markdown-it')({ html: true });
 
@@ -28,19 +29,11 @@ module.exports = function(eleventyConfig) {
 
 	// Плагины: --------------------------------------
 
-	eleventyConfig.addPlugin(pluginBundle, {
-		// Папка в выходном каталоге куда будут записываться файлы пакетов:
-		toFileDirectory: 'bundle',
-		// Дополнительные имена бандлов ('css', 'js', 'html' есть по умолчанию):
-		bundles: [],
-		// Array of async-friendly callbacks to transform bundle content.
-		// Работают с getBundle и getBundleFileUrl:
-		transforms: [],
-		// Array of bundle names eligible for duplicate bundle hoisting
-		hoistDuplicateBundlesFor: [], // e.g. ['css', 'js']
-	});
+	eleventyConfig.addPlugin(pluginBundle);
 
 	eleventyConfig.addPlugin(eleventyNavigationPlugin);
+
+	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 
 
 
@@ -181,6 +174,7 @@ module.exports = function(eleventyConfig) {
 	// Прямое копирование файлов и папок: ------------
 	//------------------------------------------------
 
+	eleventyConfig.addPassthroughCopy('src/admin');// Для CMS Decap.
 	eleventyConfig.addPassthroughCopy('src/img');
 	//eleventyConfig.addPassthroughCopy('src/img/**/*.{svg,avif,webp,jxl,jpg,jpeg,png,tif,tiff,bmp,gif}');
 	eleventyConfig.addPassthroughCopy('src/fls');
@@ -199,7 +193,7 @@ module.exports = function(eleventyConfig) {
 	//------------------------------------------------
 
 	return {
-		//pathPrefix: '/example.com/', // Можно указать дополнение к ссылкам и использовать через фильтр "| url", например имя репозитория на Github (но для этого лучше использовать плагин html-base).
+		//pathPrefix: '/example.com/',// Тут можно указать дополнение к ссылкам (например имя репозитория на GitHub) и оно будет подставляться к локальным ссылкам с помощью плагина html-base.
 		addPassthroughFileCopy: true,
 		dataTemplateEngine: 'njk',
 		markdownTemplateEngine: 'njk',

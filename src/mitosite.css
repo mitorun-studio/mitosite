@@ -66,6 +66,8 @@
 	--grey-lightest: hsla(0, 0%, 0%, 0.05);
 	--color-main: hsl(225, 73%, 57%);
 	--color-second: hsl(16, 100%, 66%);
+	--bg-code: hsl(0, 0%, 94%);
+	--bg-code-block: var(--bg-code);
 	/* --color-success: hsl(139, 100%, 19%);
 	--color-danger: hsl(2, 100%, 28%);
 	--color-warning: hsl(45, 100%, 51%);
@@ -269,11 +271,6 @@ h6,
 	line-height: var(--line-height-m, 1.5);
 }
 
-/*p:not([class]):not(:last-child),
-.p {
-	margin-bottom: 1em;
-}*/
-
 a {
 	/*box-decoration-break: clone;
 	-webkit-box-decoration-break: clone;*/
@@ -316,8 +313,7 @@ svg {
 }
 
 .main {
-	flex-grow: 1;
-	/* для прижатия футера */
+	flex-grow: 1;/* для прижатия футера. */
 }
 
 .section {
