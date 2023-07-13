@@ -1,0 +1,20 @@
+<ol class="breadcrumb" aria-label="Хлебные крошки">
+	{% for item in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true }) %}
+	<li>
+		{% if item.url == page.url or item.disableBreadcrumbLink === true %}
+		<span aria-current="page">{{ item.title }}</span>
+		{% else %}
+		<a href="{{ item.url | url }}">{{ item.title }}</a>
+		{% endif %}
+	</li>
+	{% endfor %}
+</ol>
+
+
+
+
+{# <ol class="breadcrumb" aria-label="Хлебные крошки">
+	<li><a class href="/">Главная</a></li>
+	<li><a class href="/blog/">Программы</a></li>
+	<li><span aria-current="page">Текущая страница</span></li>
+</ol> #}

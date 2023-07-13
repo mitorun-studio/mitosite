@@ -10,7 +10,7 @@ case $SCRIPT_NAME in
 		npx stylelint ../$PROJECT_NAME/src/**/*.css --fix
 		;;
 	yaspeller)
-		npx yaspeller --only-errors --ignore-digits --find-repeat-words --file-extensions ".html,.md,.njk,.txt,.css" ../$PROJECT_NAME/src/
+		npx yaspeller --only-errors --ignore-digits --find-repeat-words --file-extensions ".html,.md,.njk,.txt,.css,.yml,.yaml,.xml,.doc,.docx,.pdf" ../$PROJECT_NAME/src/
 		;;
 	validator)
 		npx node-w3c-validator --input ../$PROJECT_NAME/site/**/*.html --format lint --verbose --errors-only
@@ -33,4 +33,7 @@ case $SCRIPT_NAME in
 	typograf)
 		node typograf.js ../$PROJECT_NAME/site/
 		;;
+	# svgo)
+	# 	node typograf.js ../$PROJECT_NAME/site/
+	# 	;;
 esac

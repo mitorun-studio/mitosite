@@ -8,9 +8,12 @@
 	"main": "eleventy.config.js",
 	"scripts": {
 		"start": "rm -rf site && npx @11ty/eleventy --serve --quiet",
-		"build": "rm -rf site && npx @11ty/eleventy",
+		"eleventy": "rm -rf site && npx @11ty/eleventy",
+		"sharpimg": "node sharp ./src/img/ ./site/img/",
+		"typograf": "node typograf.js ./site/",
+		"svgo": "node svgo --folder ./site --recursive --multipass --quiet --precision 3",
 		"prod": "rm -rf site && npx @11ty/eleventy && node sharp ./src/img/ ./site/img/ && node typograf.js ./site/",
-		
+		"production": "eleventy && sharpimg && typograf && svgo",
 		"sl": "bash plugins.sh stylelint",
 		"ys": "bash plugins.sh yaspeller",
 		"w3c": "bash plugins.sh node-w3c-validator",
@@ -33,8 +36,14 @@
 		"@11ty/eleventy-navigation": "^0.3.5",
 		"@11ty/eleventy-plugin-bundle": "^1.0.4",
 		"@11tyrocks/eleventy-plugin-lightningcss": "^1.1.2",
-		"esbuild": "^0.18.11",
+		"eleventy-plugin-broken-links": "^2.0.3",
+		"esbuild": "^0.18.12",
+		"fs": "^0.0.1-security",
 		"html-minifier-terser": "^7.2.0",
-		"markdown-it": "^13.0.1"
+		"markdown-it": "^13.0.1",
+		"path": "^0.12.7",
+		"sharp": "^0.32.2",
+		"svgo": "^3.0.2",
+		"typograf": "^7.1.0"
 	}
 }

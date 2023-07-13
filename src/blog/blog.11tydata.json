@@ -1,5 +1,14 @@
 {
 	"pageClass": "post",
 	"tags": "blog",
+	"eleventyNavigation": {
+		"parent": "blog"
+	},
+	"eleventyComputed": {
+		"eleventyNavigation": {
+			"key": "{{ page.url }}",
+			"title": "{{ title }}"
+		}
+	},
 	"layout": "_page-post.njk"
 }

@@ -3,6 +3,7 @@ const lightningCSS = require('@11tyrocks/eleventy-plugin-lightningcss');
 // const esbuild = require('esbuild');
 const pluginBundle = require('@11ty/eleventy-plugin-bundle');
 const { EleventyHtmlBasePlugin } = require('@11ty/eleventy');
+// const { EleventyI18nPlugin } = require("@11ty/eleventy");
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
 const markdownIt = require('markdown-it')({ html: true });
 
@@ -29,11 +30,31 @@ module.exports = function(eleventyConfig) {
 
 	// Плагины: --------------------------------------
 
+	// Сборка разных файлов и кусков кода:
 	eleventyConfig.addPlugin(pluginBundle);
 
+	// Организация меню и хлебных крошек:
 	eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
+	// Добавление пути из pathPrefix к локальным ссылкам:
 	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+
+	// Настройка ссылок для мультиязычных сайтов:
+	eleventyConfig.addPlugin(EleventyI18nPlugin, {
+		// any valid BCP 47-compatible language tag is supported:
+		defaultLanguage: "", // Required, this site uses "en"
+	});
+
+	// Ищет неработающие ссылки (пока только внешние):
+	eleventyConfig.addPlugin(brokenLinksPlugin, {
+		redirect: "warn",
+		broken: "warn",
+		cacheDuration: "1d",
+		loggingLevel: 2,
+		excludeUrls: [],
+		excludeInputs: [],
+		callback: null,
+	});
 
 
 
